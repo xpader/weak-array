@@ -1,0 +1,12 @@
+{
+    "name": "pader/weak-array",
+    "description": "Array weak reference with value.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WeakArray\\": "src/"
+        }
+    },
+    "require": {}
+}
