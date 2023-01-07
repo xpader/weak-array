@@ -4,6 +4,14 @@ An ArrayAccess implement let you can storage a weak  reference object in array b
 
 This like an temporary cache, help you to reuse same object when it's still use in other place, and will auto unset the item when all reference is destruct.
 
+## Install
+
+Require php version >= 8.0.0
+
+```sh
+composer require pader/weak-array
+```
+
 ## Simple example:
 
 ```php
