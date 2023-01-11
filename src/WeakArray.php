@@ -32,7 +32,7 @@ class WeakArray implements \ArrayAccess, \Countable {
         return isset($this->array[$offset]) && $this->array[$offset]->get() !== null;
     }
 
-    public function offsetGet(mixed $offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return isset($this->array[$offset]) ? $this->array[$offset]->get() : null;
     }
@@ -63,8 +63,10 @@ class WeakArray implements \ArrayAccess, \Countable {
             $value = $this->array[$offset]->get();
 
             if ($value !== null) {
-                $this->destructDetectors[$value][$offset]->deactivate();
-                unset($this->destructDetectors[$value][$offset]);
+                $destructDetectors = $this->destructDetectors[$value];
+                $destructDetectors[$offset]->deactivate();
+                unset($destructDetectors[$offset]);
+                $this->destructDetectors[$value] = $destructDetectors;
             }
 
             unset($this->array[$offset]);
